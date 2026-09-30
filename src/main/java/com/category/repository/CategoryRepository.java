@@ -10,5 +10,5 @@ import com.category.model.Categories;
 @Repository
 public interface CategoryRepository extends JpaRepository<Categories,Integer>
 {
-    List<Categories> findById(int id);
+	
 }

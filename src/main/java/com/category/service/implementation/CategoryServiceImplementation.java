@@ -24,7 +24,7 @@ public class CategoryServiceImplementation implements CategoryService
 	@Override
 	public Categories getCategoryById(int id)
 	{
-		return categoryRepository.getOne((int) id);
+		return categoryRepository.findById(id).orElse(null);
 	}
 
 	@Override

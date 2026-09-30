@@ -1,9 +1,14 @@
 package com.category.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Categories
@@ -13,6 +18,10 @@ public class Categories
 	private int id;
 	private String name;
 	private String description;
+	
+	@OneToMany(mappedBy = "category")
+	@JsonIgnore
+	private List<Product> products;
 	
 	public int getId() {
 		return id;
@@ -32,8 +41,15 @@ public class Categories
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	@Override
 	public String toString() {
-		return "Categories [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "Categories [id=" + id + ", name=" + name + ", description=" + description + ", products=" + products
+				+ "]";
 	}
 }
